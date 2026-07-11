@@ -1,0 +1,27 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Krites for Chrome</title><style>:root{color-scheme:light dark;--ink:#1c1e1a;--sub:#5a5f58;--line:#e2e4df;--accent:#6a8f00;--bg:#fbfcf9}
+@media (prefers-color-scheme:dark){:root{--ink:#eceee9;--sub:#9aa094;--line:#2a2d28;--accent:#c0e34a;--bg:#121410}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;line-height:1.85}
+main{max-width:720px;margin:0 auto;padding:48px 20px 96px}
+h1{font-size:26px;line-height:1.4;margin:8px 0 4px}h2{font-size:19px;margin:40px 0 8px;border-top:1px solid var(--line);padding-top:28px}h3{font-size:16px;margin:28px 0 6px}
+p,li{font-size:15px}small,.meta{color:var(--sub);font-size:13px}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:13.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}th{background:rgba(127,127,127,.06)}
+a{color:var(--accent)}code{background:rgba(127,127,127,.12);padding:1px 5px;border-radius:4px;font-size:13px}
+nav{font-size:13px;margin-bottom:20px}nav a{margin-right:14px}
+.updated{margin-top:56px;border-top:1px solid var(--line);padding-top:16px;color:var(--sub);font-size:13px}
+ .big{font-size:17px} .copybtn{display:inline-block;margin-top:10px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:14px;cursor:pointer}</style>
+<script>
+const STORE_URL = ""; // Chrome Web Store URL — 提出後に確定させる（空の間は下の案内を表示）
+function isChrome(){const ua=navigator.userAgent;return /Chrome\//.test(ua)&&!/Edg\/|OPR\/|Brave/.test(ua);}
+addEventListener('DOMContentLoaded',()=>{
+  if(STORE_URL && isChrome()){ location.replace(STORE_URL); return; }
+  document.getElementById(STORE_URL ? (isChrome()?'go':'notchrome') : 'pending').style.display='block';
+  const b=document.getElementById('copy'); if(b) b.onclick=async()=>{await navigator.clipboard.writeText(location.href); b.textContent='コピーしました';};
+});
+</script></head><body><main>
+<h1>Krites for Chrome</h1>
+<div id="pending" style="display:none"><p class="big">Chrome版Kritesは現在ストア公開の準備中です。公開までもう少しお待ちください。</p></div>
+<div id="notchrome" style="display:none"><p class="big">このページを <strong>Google Chrome</strong> で開いてください。KritesのChrome拡張はChromeにだけ入れられます。</p><button class="copybtn" id="copy">このページのアドレスをコピー</button></div>
+<div id="go" style="display:none"><p class="big">Chromeウェブストアへ移動しています…</p></div>
+</main></body></html>
